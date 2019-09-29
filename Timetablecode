@@ -1,0 +1,329 @@
+#include <stdio.h>
+
+#include <stdio.h>
+
+#include <iostream>
+#include <cstring>
+
+
+using namespace std;
+
+class data
+{
+	public:
+	char teacher[30];
+     char batch[20];
+	char course[20];
+	
+
+};
+
+int main()
+{
+	data d[1000];
+	int num,count=0;
+	char teach[30] , bat[20] , cou[20];
+	cout<<"Enter the number of inputs: ";
+	
+	cin>>num;
+	int i,j,k , l, frequency;
+	for(i=0;i<num;i++)
+	{
+		cout<<"Enter the frequency of the class: "<<endl;
+		cin>>frequency;
+		cout<<"Enter the name of the teacher: "<<endl;
+		cin>>teach;
+		cout<<"Enter the batch name: " <<endl;
+		cin>>bat;
+		cout<<"Enter the course name: "<<endl;
+		cin>>cou;
+		for(j=0;j<frequency;j++)
+		{
+			strcpy(d[count].teacher , teach);
+			strcpy(d[count].batch , bat);
+			strcpy(d[count].course , cou);
+			
+			count++;
+		}
+
+
+	}
+	data monday[9][10];
+	data tuesday[9][10];
+	data wednesday[9][10];
+	data thursday[9][10];
+	data friday[9][10];
+	int m[9] = {0,0,0,0,0,0,0,0,0} , check =0,pos=0;
+	int tu[9] = {0,0,0,0,0,0,0,0,0} , f[9]={0,0,0,0,0,0,0,0,0,} , w[9] = {0,0,0,0,0,0,0,0,0,} , th[9]={0,0,0,0,0,0,0,0,0};
+	for(i=0;i<count;i++)
+	{
+			check = 0;
+			for(k=0;k<9;k++)
+
+			{
+				check = 0;
+				for(l=0;l<m[k];l++)
+				{
+					if(strcmp(monday[k][l].teacher,d[i].teacher)==0 || strcmp(monday[k][l].batch , d[i].batch )==0)
+					{
+						check++;
+					}
+					
+				}
+				if(check==0)
+				{
+					pos = m[k];
+					monday[k][pos] = d[i];
+					m[k]++;
+					cout<<"Entry"<<endl;
+					break;
+				}
+			
+			}
+			if(check!=0)
+			{
+				
+				for(k=0;k<9;k++)
+
+				{
+					check = 0;
+					for(l=0;l<tu[k];l++)
+					{
+						if(strcmp(tuesday[k][l].teacher,d[i].teacher)==0 || strcmp(tuesday[k][l].batch ,d[i].batch)==0 )
+						{
+							check++;
+						}
+					
+					}
+					if(check==0)
+					{
+						pos = tu[k];
+						tuesday[k][pos] = d[i];
+						tu[k]++;
+						break;
+					}
+				}	
+			}
+			if(check!=0)
+			{
+				
+				for(k=0;k<9;k++)
+
+				{
+					check = 0;
+					for(l=0;l<w[k];l++)
+					{
+						if(strcmp(wednesday[k][l].teacher ,d[i].teacher)==0 || strcmp(wednesday[k][l].batch , d[i].batch)==0 )
+						{
+							check++;
+						}
+					
+					}
+					if(check==0)
+					{
+						pos = w[k];
+						wednesday[k][pos] = d[i];
+						w[k]++;
+						break;
+					}
+				}	
+			}
+			if(check!=0)
+			{
+				check = 0;
+				for(k=0;k<9;k++)
+
+				{
+					for(l=0;l<th[k];l++)
+					{
+						if(strcmp(thursday[k][l].teacher ,d[i].teacher)==0 || strcmp(thursday[k][l].batch ,d[i].batch )==0)
+						{
+							check++;
+						}
+					
+					}
+					if(check==0)
+					{
+						pos = th[k];
+						thursday[k][pos] = d[i];
+						th[k]++;
+						break;
+					}
+				}	
+			}
+			
+		if(check!=0)
+			{
+			    check = 0;
+				for(k=0;k<9;k++)
+
+				{
+					for(l=0;l<f[k];l++)
+					{
+						if(strcmp(friday[k][l].teacher,d[i].teacher)==0 || strcmp(friday[k][l].batch ,d[i].batch )==0)
+						{
+							check++;
+						}
+					
+					}
+					if(check==0)
+					{
+						pos = f[k];
+						friday[k][pos] = d[i];
+						f[k]++;
+						break;
+					}
+				}	
+			}
+	}
+	cout<<"Monday"<<endl;
+	
+	for(i=0;i<9;i++)
+	{
+	    if(i==0)
+			    cout<<"8-9"<<endl;
+			else if(i==1)
+			    cout<<"9-10"<<endl;
+			   else if(i==2)
+			        cout<<"10-11"<<endl;
+			 else if(i==3)
+			        cout<<"11-12"<<endl;
+			 else if(i==4)
+			        cout<<"12-1"<<endl;
+			        else if(i==5)
+			        cout<<"2-3"<<endl;
+			        else if(i==6)
+			        cout<<"3-4"<<endl;
+			        else if(i==7)
+			        cout<<"4-5"<<endl;
+			        else if(i==8)
+			        cout<<"5-6"<<endl;
+		for(j=0;j<m[i];j++)
+		{
+		
+			cout<<monday[i][j].teacher<<" "<<monday[i][j].batch<<" "<<monday[i][j].course<<endl;
+		}
+		cout<<endl;
+	}
+	cout<<endl<<endl;
+	cout<<"Tuesday"<<endl;
+	for(i=0;i<9;i++)
+	{
+	    if(i==0)
+			    cout<<"8-9"<<endl;
+			else if(i==1)
+			    cout<<"9-10"<<endl;
+			   else if(i==2)
+			        cout<<"10-11"<<endl;
+			 else if(i==3)
+			        cout<<"11-12"<<endl;
+			 else if(i==4)
+			        cout<<"12-1"<<endl;
+			        else if(i==5)
+			        cout<<"2-3"<<endl;
+			        else if(i==6)
+			        cout<<"3-4"<<endl;
+			        else if(i==7)
+			        cout<<"4-5"<<endl;
+			        else if(i==8)
+			        cout<<"5-6"<<endl;
+		for(j=0;j<tu[i];j++)
+		{
+			
+			cout<<tuesday[i][j].teacher<<" "<<tuesday[i][j].batch<<" "<<tuesday[i][j].course<<endl;
+		}
+		cout<<endl;
+	}
+	cout<<endl<<endl;
+	cout<<"Wednesday"<<endl;
+	for(i=0;i<9;i++)
+	{
+		if(i==0)
+			    cout<<"8-9"<<endl;
+			else if(i==1)
+			    cout<<"9-10"<<endl;
+			   else if(i==2)
+			        cout<<"10-11"<<endl;
+			 else if(i==3)
+			        cout<<"11-12"<<endl;
+			 else if(i==4)
+			        cout<<"12-1"<<endl;
+			        else if(i==5)
+			        cout<<"2-3"<<endl;
+			        else if(i==6)
+			        cout<<"3-4"<<endl;
+			        else if(i==7)
+			        cout<<"4-5"<<endl;
+			        else if(i==8)
+			        cout<<"5-6"<<endl;
+		for(j=0;j<w[i];j++)
+		{
+		
+			cout<<wednesday[i][j].teacher<<" "<<wednesday[i][j].batch<<" "<<wednesday[i][j].course<<endl;
+		}
+		cout<<endl;
+	}
+	cout<<endl<<endl;
+	cout<<"Thursday"<<endl;
+	for(i=0;i<9;i++)
+	{
+		if(i==0)
+			    cout<<"8-9"<<endl;
+			else if(i==1)
+			    cout<<"9-10"<<endl;
+			   else if(i==2)
+			        cout<<"10-11"<<endl;
+			 else if(i==3)
+			        cout<<"11-12"<<endl;
+			 else if(i==4)
+			        cout<<"12-1"<<endl;
+			        else if(i==5)
+			        cout<<"2-3"<<endl;
+			        else if(i==6)
+			        cout<<"3-4"<<endl;
+			        else if(i==7)
+			        cout<<"4-5"<<endl;
+			        else if(i==8)
+			        cout<<"5-6"<<endl;
+		for(j=0;j<th[i];j++)
+		{
+		   
+			cout<<thursday[i][j].teacher<<" "<<thursday[i][j].batch<<" "<<thursday[i][j].course<<endl;
+		}
+		cout<<endl;
+	}
+	cout<<endl<<endl;
+	cout<<"Friday"<<endl;
+	for(i=0;i<9;i++)
+	{
+		if(i==0)
+			    cout<<"8-9"<<endl;
+			else if(i==1)
+			    cout<<"9-10"<<endl;
+			   else if(i==2)
+			        cout<<"10-11"<<endl;
+			 else if(i==3)
+			        cout<<"11-12"<<endl;
+			 else if(i==4)
+			        cout<<"12-1"<<endl;
+			        else if(i==5)
+			        cout<<"2-3"<<endl;
+			        else if(i==6)
+			        cout<<"3-4"<<endl;
+			        else if(i==7)
+			        cout<<"4-5"<<endl;
+			        else if(i==8)
+			        cout<<"5-6"<<endl;
+		for(j=0;j<f[i];j++)
+		{
+		   
+			cout<<friday[i][j].teacher<<" "<<friday[i][j].batch<<" "<<friday[i][j].course<<endl;
+		}
+		cout<<endl;
+	}
+	cout<<endl;
+	
+}
+
+
+
